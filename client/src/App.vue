@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { eventBus } from "@/main.js";
 import RegionService from "@/services/regionService"
 import DistilleryService from "@/services/distilleryService"
 import WhiskyService from "@/services/whiskyService"
@@ -21,12 +22,14 @@ export default {
             regions: [],
             distilleries: [],
             whiskies: [],
+            selectedDistillery: ''
         }
     },
     mounted() {
         this.getRegions();
         this.getDistilleries();
         this.getWhiskies();
+        eventBus.$on('distillery-selected', (distillery) => this.selectedDistillery = distillery)
     },
     methods: {
         getRegions() {

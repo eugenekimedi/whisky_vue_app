@@ -1,6 +1,6 @@
 <template>
     <div class="distillery-list-item" v-if="distillery">
-        <p>{{distillery.name}}</p>
+        <p v-on:click="setSelected">{{distillery.name}}</p>
     </div>
 </template>
 
@@ -10,6 +10,11 @@ import { eventBus } from "@/main.js";
 export default {
     name: "distillery-list-item",
     props: ["distillery"],
+    methods: {
+        setSelected: function() {
+            eventBus.$emit("distillery-selected", this.distillery)
+        }
+    }
 }
 </script>
 
