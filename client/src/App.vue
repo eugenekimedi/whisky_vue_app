@@ -7,6 +7,9 @@
             :distilleries='distilleries'
         ></distillery-list>
     </div>
+    <div>
+        <leaflet-map></leaflet-map>
+    </div>
     <div v-if="selectedDistillery">
         <h2>Distillery Info:</h2>
         <distillery-info
@@ -42,7 +45,7 @@ import DistilleryList from "@/components/DistilleryList.vue"
 import DistilleryInfo from "@/components/DistilleryInfo.vue"
 import WhiskyList from "@/components/WhiskyList.vue"
 import WhiskyInfo from "@/components/WhiskyInfo.vue"
-
+import LeafletMap from "@/components/LeafletMap.vue"
 
 export default {
     name: "app",
@@ -84,7 +87,8 @@ export default {
         'distillery-list': DistilleryList,
         'distillery-info': DistilleryInfo,
         'whisky-list': WhiskyList,
-        'whisky-info': WhiskyInfo
+        'whisky-info': WhiskyInfo,
+        'leaflet-map': LeafletMap
     }
 }
 </script>
