@@ -19,14 +19,14 @@
                 :latLng="[distillery.lat, distillery.long]"
                 v-on:click=handleClick
             >
-                <l-popup>{{distillery.name}}</l-popup>
+                <l-tooltip>{{distillery.name}}</l-tooltip>
             </l-marker>
         </l-map>
     </div>
 </template>
 
 <script>
-import { LMap, LTileLayer, LMarker, LPopup} from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, LTooltip} from 'vue2-leaflet';
 import { Icon } from 'leaflet';
 
 delete Icon.Default.prototype._getIconUrl;
@@ -41,7 +41,7 @@ export default {
     LMap,
     LTileLayer,
     LMarker,
-    LPopup
+    LTooltip
   },
   props:['distilleries'],
   data () {
