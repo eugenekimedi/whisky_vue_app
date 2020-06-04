@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const regionQueries = require('./queries/regionQueries')
+const distilleryQueries = require('./queries/distilleryQueries')
 
 const app = express()
 
@@ -18,6 +19,12 @@ app.get('/regions/:id', regionQueries.getRegionById)
 app.post('/regions', regionQueries.createRegion)
 app.put('/regions/:id', regionQueries.updateRegion)
 app.delete('/regions/:id', regionQueries.deleteRegion)
+
+app.get('/distilleries', distilleryQueries.getDistilleries)
+app.get('/distilleries/:id', distilleryQueries.getDistilleryById)
+app.post('/distilleries', distilleryQueries.createDistillery)
+app.put('/distilleries/:id', distilleryQueries.updateDistillery)
+app.delete('/distilleries/:id', distilleryQueries.deleteDistillery)
 
 app.listen(3000, () => {
     console.log(`App running on port 3000`)
