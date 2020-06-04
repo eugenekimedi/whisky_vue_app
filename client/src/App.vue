@@ -15,6 +15,13 @@
             :distillery="selectedDistillery"
         ></distillery-info>
     </div>
+    <div v-if="selectedDistillery">
+        <h2>Whiskies</h2>
+        <whisky-list
+            :distillery="selectedDistillery"
+            :whiskies="this.whiskies"
+        ></whisky-list>
+    </div>
 </div>
 </template>
 
@@ -25,6 +32,7 @@ import DistilleryService from "@/services/distilleryService"
 import WhiskyService from "@/services/whiskyService"
 import DistilleryList from "@/components/DistilleryList.vue"
 import DistilleryInfo from "@/components/DistilleryInfo.vue"
+import WhiskyList from "@/components/WhiskyList.vue"
 
 
 export default {
@@ -59,7 +67,8 @@ export default {
     },
     components: {
         'distillery-list': DistilleryList,
-        'distillery-info': DistilleryInfo
+        'distillery-info': DistilleryInfo,
+        'whisky-list': WhiskyList,
     }
 }
 </script>
