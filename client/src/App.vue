@@ -22,6 +22,14 @@
             :whiskies="this.whiskies"
         ></whisky-list>
     </div>
+    <div v-if="selectedWhisky">
+        <h2>Whisky Info:</h2>
+        <whisky-info
+            class="whisky-info"
+            v-if="selectedWhisky"
+            :whisky="selectedWhisky"
+        ></whisky-info>
+    </div>
 </div>
 </template>
 
@@ -33,6 +41,7 @@ import WhiskyService from "@/services/whiskyService"
 import DistilleryList from "@/components/DistilleryList.vue"
 import DistilleryInfo from "@/components/DistilleryInfo.vue"
 import WhiskyList from "@/components/WhiskyList.vue"
+import WhiskyInfo from "@/components/WhiskyInfo.vue"
 
 
 export default {
@@ -42,14 +51,16 @@ export default {
             regions: [],
             distilleries: [],
             whiskies: [],
-            selectedDistillery: ''
+            selectedDistillery: '',
+            selectedWhisky: ''
         }
     },
     mounted() {
         this.getRegions();
         this.getDistilleries();
         this.getWhiskies();
-        eventBus.$on('distillery-selected', (distillery) => this.selectedDistillery = distillery)
+        eventBus.$on('distillery-selected', (distillery) => this.setDistillery(distillery))
+        eventBus.$on('whisky-selected', (whisky) => this.selectedWhisky = whisky)
     },
     methods: {
         getRegions() {
@@ -63,12 +74,17 @@ export default {
         getWhiskies() {
             WhiskyService.getWhiskies()
             .then(whiskies => this.whiskies = whiskies)
+        },
+        setDistillery(distillery) {
+            this.selectedDistillery = distillery;
+            this.selectedWhisky = '';
         }
     },
     components: {
         'distillery-list': DistilleryList,
         'distillery-info': DistilleryInfo,
         'whisky-list': WhiskyList,
+        'whisky-info': WhiskyInfo
     }
 }
 </script>
