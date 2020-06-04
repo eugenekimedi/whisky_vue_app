@@ -1,4 +1,5 @@
 <template>
+<div>
     <div>
         <h2>Distilleries</h2>
         <distillery-list 
@@ -6,6 +7,15 @@
             :distilleries='distilleries'
         ></distillery-list>
     </div>
+    <div v-if="selectedDistillery">
+        <h2>Distillery Info:</h2>
+        <distillery-info
+            class="distillery-info"
+            v-if="selectedDistillery"
+            :distillery="selectedDistillery"
+        ></distillery-info>
+    </div>
+</div>
 </template>
 
 <script>
@@ -14,6 +24,8 @@ import RegionService from "@/services/regionService"
 import DistilleryService from "@/services/distilleryService"
 import WhiskyService from "@/services/whiskyService"
 import DistilleryList from "@/components/DistilleryList.vue"
+import DistilleryInfo from "@/components/DistilleryInfo.vue"
+
 
 export default {
     name: "app",
@@ -47,6 +59,7 @@ export default {
     },
     components: {
         'distillery-list': DistilleryList,
+        'distillery-info': DistilleryInfo
     }
 }
 </script>
