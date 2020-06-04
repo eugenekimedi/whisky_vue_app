@@ -1,31 +1,49 @@
 <template>
 
-  <div style="height: 500px;">
-    <div class="info" style="height: 15%">
-      <span>Center: {{ center }}</span>
-      <span>Zoom: {{ zoom }}</span>
+    <div style="height: 500px;">
+        <div class="info" style="height: 15%">
+            <span>Center: {{ center }}</span>
+            <span>Zoom: {{ zoom }}</span>
+        </div>
+        <l-map
+            style="height: 500px; width: 500px"
+            :zoom="zoom"
+            :center="center"
+            @update:zoom="zoomUpdated"
+            @update:center="centerUpdated"
+        >
+            <l-tile-layer :url="url"></l-tile-layer>
+            <l-marker 
+                v-for="(distillery, index) in this.distilleries"
+                :key="index"
+                :latLng="[distillery.lat, distillery.long]"
+                v-on:click=handleClick
+            >
+                <l-popup>{{distillery.name}}</l-popup>
+            </l-marker>
+        </l-map>
     </div>
-    <l-map
-      style="height: 500px; width: 500px"
-      :zoom="zoom"
-      :center="center"
-      @update:zoom="zoomUpdated"
-      @update:center="centerUpdated"
-    >
-      <l-tile-layer :url="url"></l-tile-layer>
-    </l-map>
-  </div>
 </template>
 
 <script>
-import { LMap, LTileLayer} from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, LPopup} from 'vue2-leaflet';
+import { Icon } from 'leaflet';
+
+delete Icon.Default.prototype._getIconUrl;
+Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+});
 
 export default {
   components: {
     LMap,
-    LTileLayer
+    LTileLayer,
+    LMarker,
+    LPopup
   },
-  props:["distilleries"],
+  props:['distilleries'],
   data () {
     return {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -42,6 +60,9 @@ export default {
     },
     boundsUpdated (bounds) {
       this.bounds = bounds;
+    },
+    handleClick() {
+      console.log('click');
     }
   }
 }

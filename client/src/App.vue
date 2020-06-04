@@ -2,13 +2,12 @@
 <div>
     <div>
         <h2>Distilleries</h2>
-        <distillery-list 
-            class="distillery-list" 
-            :distilleries='distilleries'
-        ></distillery-list>
+        <distillery-list class="distillery-list" :distilleries='distilleries'></distillery-list>
     </div>
     <div>
-        <leaflet-map></leaflet-map>
+        <leaflet-map
+            :distilleries="distilleries"
+        ></leaflet-map>
     </div>
     <div v-if="selectedDistillery">
         <h2>Distillery Info:</h2>
