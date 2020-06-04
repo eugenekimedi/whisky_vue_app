@@ -4,6 +4,8 @@
 
 <script>
 import RegionService from "@/services/regionService"
+import DistilleryService from "@/services/distilleryService"
+
 export default {
     name: "app",
     data() {
@@ -15,11 +17,16 @@ export default {
     },
     mounted() {
         this.getRegions();
+        this.getDistilleries();
     },
     methods: {
         getRegions() {
             RegionService.getRegions()
-            .then (regions => this.regions = regions)
+            .then(regions => this.regions = regions)
+        },
+        getDistilleries() {
+            DistilleryService.getDistilleries()
+            .then(distilleries => this.distilleries = distilleries)
         }
     }
 }
