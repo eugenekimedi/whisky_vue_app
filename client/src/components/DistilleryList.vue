@@ -1,14 +1,22 @@
 <template>
     <div class="distillery-list" v-if="distilleries.length">
-        <p v-for="distillery in distilleries">{{distillery.name}}</p>
+        <distillery-list-item
+            v-for="(distillery, index) in distilleries"
+            :distillery="distillery"
+            :key="index"
+        />
     </div>
 </template>
 
 <script>
+import DistilleryListItem from "@/components/DistilleryListItem.vue"
 
 export default {
     name: "distillery-list",
-    props: ["distilleries"]
+    props: ["distilleries"],
+    components: {
+        'distillery-list-item': DistilleryListItem
+    }
 }
 </script>
 
