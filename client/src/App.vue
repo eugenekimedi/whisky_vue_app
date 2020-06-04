@@ -2,7 +2,10 @@
 <div>
     <div>
         <h2>Distilleries</h2>
-        <distillery-list class="distillery-list" :distilleries='distilleries'></distillery-list>
+        <distillery-list 
+            class="distillery-list" 
+            :distilleries='distilleries'
+        ></distillery-list>
     </div>
     <div>
         <leaflet-map
