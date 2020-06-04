@@ -1,8 +1,16 @@
 <template>
+    <div class="whisky-list" v-if="whiskiesToDisplay.length">
+        <whisky-list-item
+            v-for="(whisky, index) in whiskiesToDisplay"
+            :whisky="whisky"
+            :key="index"
+        />
+    </div>
 </template>
 
 <script>
 import DistilleryService from "@/services/distilleryService"
+import WhiskyListItem from "@/components/WhiskyListItem"
 
 export default {
     name: "whisky-list",
@@ -18,6 +26,9 @@ export default {
                 .then(whiskies => this.whiskies = whiskies)
         }
     },
+    components: {
+        'whisky-list-item': WhiskyListItem
+    }
 }
 </script>
 
