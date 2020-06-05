@@ -21,8 +21,8 @@ const getWhiskyById = (request, response) => {
 
 
 const createWhisky = (request, response) => {
-    const { name, distillery_id, abv } = request.body
-    pool.query('INSERT INTO whiskies (name, distillery_id, abv) VALUES ($1, $2, $3) RETURNING id', [name, distillery_id, abv], (error, results) => {
+    const { name, distillery_id, abv, image_url } = request.body
+    pool.query('INSERT INTO whiskies (name, distillery_id, abv, image_url) VALUES ($1, $2, $3, $4) RETURNING id', [name, distillery_id, abv, image_url], (error, results) => {
         if (error) {
             throw error
         }
@@ -32,11 +32,11 @@ const createWhisky = (request, response) => {
   
 const updateWhisky = (request, response) => {
     const id = parseInt(request.params.id)
-    const { name, distillery_id, abv } = request.body
+    const { name, distillery_id, abv, image_url } = request.body
 
     pool.query(
-        'UPDATE whiskies SET (name, distillery_id, abv) = ($1, $2, $3) WHERE id = $4',
-        [name, distillery_id, abv, id],
+        'UPDATE whiskies SET (name, distillery_id, abv, image_url) = ($1, $2, $3, $4) WHERE id = $5',
+        [name, distillery_id, abv, image_url, id],
         (error, results) => {
         if (error) {
             throw error
