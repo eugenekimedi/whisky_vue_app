@@ -12,7 +12,8 @@ CREATE TABLE distilleries (
     name VARCHAR(255) NOT NULL,
     region_id INT REFERENCES regions(id) NOT NULL,
     lat DECIMAL(9,6) NOT NULL,
-    long DECIMAL(9,6) NOT NULL
+    long DECIMAL(9,6) NOT NULL,
+    image_url VARCHAR(2083)
 );
 
 CREATE TABLE whiskies (

@@ -20,8 +20,8 @@ const getDistilleryById = (request, response) => {
 }
 
 const createDistillery = (request, response) => {
-    const { name, region_id, lat, long } = request.body
-    pool.query('INSERT INTO distilleries (name, region_id, lat, long) VALUES ($1, $2, $3, $4) RETURNING id', [name, region_id, lat, long], (error, results) => {
+    const { name, region_id, lat, long, image_url} = request.body
+    pool.query('INSERT INTO distilleries (name, region_id, lat, long, image_url) VALUES ($1, $2, $3, $4, $5) RETURNING id', [name, region_id, lat, long, image_url], (error, results) => {
         if (error) {
             throw error
         }
@@ -31,11 +31,11 @@ const createDistillery = (request, response) => {
   
 const updateDistillery = (request, response) => {
     const id = parseInt(request.params.id)
-    const { name, region_id, lat, long } = request.body
+    const { name, region_id, lat, long, image_url } = request.body
 
     pool.query(
-        'UPDATE distilleries SET (name, region_id, lat, long) = ($1, $2, $3, $4) WHERE id = $5',
-        [name, region_id, lat, long, id],
+        'UPDATE distilleries SET (name, region_id, lat, long, image_url) = ($1, $2, $3, $4, $5) WHERE id = $6',
+        [name, region_id, lat, long, image_url, id],
         (error, results) => {
         if (error) {
             throw error
