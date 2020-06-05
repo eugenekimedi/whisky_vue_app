@@ -1,10 +1,6 @@
 <template>
 
     <div style="height: 500px;">
-        <div class="info" style="height: 15%">
-            <span>Center: {{ center }}</span>
-            <span>Zoom: {{ zoom }}</span>
-        </div>
         <l-map
             style="height: 500px; width: 500px"
             :zoom="zoom"
@@ -71,5 +67,8 @@ export default {
 </script>
 
 <style>
-
+.leaflet-map {
+    float: left;
+    width:70%;
+}
 </style>

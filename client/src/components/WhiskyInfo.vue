@@ -1,9 +1,9 @@
 <template>
     <div class="whisky-info">
+        <img class="center" height="300" width="200" :src="getImage()">
         <p>Name: {{whisky.name}}</p>
         <p>Distillery: {{distillery.name}}</p>
         <p>ABV: {{whisky.abv}}</p>
-        <img height="300" width="200" :src="getImage()">
     </div>
 </template>
 
@@ -37,7 +37,14 @@ export default {
 
 <style>
 .whisky-info {
-    display: inline-block;
     background-color: #CC8E69;
+    float:left;
+    padding:10px;
+    width: 30%;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

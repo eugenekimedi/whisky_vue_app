@@ -17,13 +17,7 @@ export default {
     props: ["distillery", "whiskies"],
     computed: {
         whiskiesToDisplay: function() {
-            return this.whiskies.filter(whisky => whisky.distillery_id === this.distillery.id);
-        }
-    },
-    methods: {
-        getWhiskiesByDistillery() {
-            DistilleryService.getWhiskiesByDistillery(this.distillery.id)
-                .then(whiskies => this.whiskies = whiskies)
+            return this.whiskies.filter(whisky => whisky.distillery_id === this.distillery.id)
         }
     },
     components: {
@@ -34,7 +28,10 @@ export default {
 
 <style>
 .whisky-list{
-    display: inline-block;
     background-color: #CC8E69;
+    float:left;
+    margin-right: 10px;
+    padding:10px;
+    width: 20%;
 }
 </style>

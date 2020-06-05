@@ -3,6 +3,7 @@
         <distillery-list-item
             v-for="(distillery, index) in distilleries"
             :distillery="distillery"
+            :whiskies="whiskies"
             :key="index"
         />
     </div>
@@ -13,7 +14,7 @@ import DistilleryListItem from "@/components/DistilleryListItem.vue"
 
 export default {
     name: "distillery-list",
-    props: ["distilleries"],
+    props: ["distilleries", "whiskies"],
     components: {
         'distillery-list-item': DistilleryListItem
     }
@@ -22,7 +23,10 @@ export default {
 
 <style>
 .distillery-list {
-    display: inline-block;
     background-color: #CC8E69;
+    float:left;
+    width: 25%;
+    margin-right: 10px;
+    padding:10px;
 }
 </style>

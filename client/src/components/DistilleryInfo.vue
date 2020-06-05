@@ -41,7 +41,10 @@ export default {
 
 <style>
 .distillery-info {
-    display: inline-block;
     background-color: #CC8E69;
+    float:left;
+    margin-right: 10px;
+    padding:10px;
+    width: 40%;
 };
 </style>

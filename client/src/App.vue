@@ -1,39 +1,51 @@
 <template>
 <div>
-    <div>
-        <h2>Distilleries</h2>
-        <distillery-list 
-            class="distillery-list" 
-            :distilleries='distilleries'
-        ></distillery-list>
+    <div class="distillery-map-wrapper">
+        <div class="distillery-list">
+            <h2 class="title">Distilleries</h2>
+            <distillery-list 
+                :distilleries='distilleries'
+                :whiskies='whiskies'
+            ></distillery-list>
+        </div>
+        <div class="leaflet-map">
+            <leaflet-map
+                :distilleries="distilleries"
+            ></leaflet-map>
+        </div>
     </div>
-    <div>
-        <leaflet-map
-            :distilleries="distilleries"
-        ></leaflet-map>
-    </div>
-    <div v-if="selectedDistillery">
-        <h2>Distillery Info:</h2>
-        <distillery-info
-            class="distillery-info"
+    <div class="info-wrapper">
+        <div 
             v-if="selectedDistillery"
-            :distillery="selectedDistillery"
-        ></distillery-info>
-    </div>
-    <div v-if="selectedDistillery">
-        <h2>Whiskies</h2>
-        <whisky-list
-            :distillery="selectedDistillery"
-            :whiskies="this.whiskies"
-        ></whisky-list>
-    </div>
-    <div v-if="selectedWhisky">
-        <h2>Whisky Info:</h2>
-        <whisky-info
-            class="whisky-info"
+            class="distillery-info"
+        >
+            <h2 class="title">Distillery Info</h2>
+            <distillery-info
+                v-if="selectedDistillery"
+                :distillery="selectedDistillery"
+            ></distillery-info>
+        </div>
+        <div
+            class="whisky-list" 
+            v-if="selectedDistillery"
+        >
+            <h2 class="title">Whiskies</h2>
+            <whisky-list
+                :distillery="selectedDistillery"
+                :whiskies="this.whiskies"
+            ></whisky-list>
+        </div>
+        <div 
             v-if="selectedWhisky"
-            :whisky="selectedWhisky"
-        ></whisky-info>
+            class="whisky-info"
+        >
+            <h2 class="title">Whisky Info</h2>
+            <whisky-info
+                class="whisky-info"
+                v-if="selectedWhisky"
+                :whisky="selectedWhisky"
+            ></whisky-info>
+        </div>
     </div>
 </div>
 </template>
@@ -96,5 +108,17 @@ export default {
 </script>
 
 <style>
-
+.distillery-map-wrapper {
+    display: inline-block;
+    width: 100%;
+    background-color: dodgerblue;
+}
+.info-wrapper {
+    display: inline-block;
+    width: 100%;
+    background:dodgerblue;
+}
+.title {
+    text-align: center;
+}
 </style>
