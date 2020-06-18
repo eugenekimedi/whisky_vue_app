@@ -11,6 +11,7 @@
         <div class="leaflet-map">
             <leaflet-map
                 :distilleries="distilleries"
+                :whiskies='whiskies'
             ></leaflet-map>
         </div>
     </div>
