@@ -1,5 +1,5 @@
 <template>
-    <div class="whisky-list" v-if="whiskiesToDisplay.length">
+    <div v-if="whiskiesToDisplay.length">
         <whisky-list-item
             v-for="(whisky, index) in whiskiesToDisplay"
             :whisky="whisky"
@@ -28,7 +28,7 @@ export default {
 
 <style>
 .whisky-list{
-    background-color: #CC8E69;
+    background-color: #ffffff6f;
     float:left;
     margin-right: 10px;
     padding:10px;

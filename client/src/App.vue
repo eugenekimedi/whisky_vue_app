@@ -1,12 +1,8 @@
 <template>
 <div>
     <div class="distillery-map-wrapper">
-        <div class="distillery-list">
-            <h2 class="title">Distilleries</h2>
-            <distillery-list 
-                :distilleries='distilleries'
-                :whiskies='whiskies'
-            ></distillery-list>
+        <div class="logo-div">
+            <img src="logo.png" alt="Whiskies of Scotland" class="logo">
         </div>
         <div class="leaflet-map">
             <leaflet-map
@@ -16,6 +12,13 @@
         </div>
     </div>
     <div class="info-wrapper">
+        <div class="distillery-list">
+            <h2 class="title">Distilleries</h2>
+            <distillery-list 
+                :distilleries='distilleries'
+                :whiskies='whiskies'
+            ></distillery-list>
+        </div>
         <div 
             v-if="selectedDistillery"
             class="distillery-info"
@@ -42,7 +45,6 @@
         >
             <h2 class="title">Whisky Info</h2>
             <whisky-info
-                class="whisky-info"
                 v-if="selectedWhisky"
                 :whisky="selectedWhisky"
             ></whisky-info>
@@ -109,16 +111,44 @@ export default {
 </script>
 
 <style>
-.distillery-map-wrapper {
-    display: inline-block;
-    width: 100%;
-    background-color: dodgerblue;
+
+html {
+  background: url('../public/background.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed ;
+  background-position-y: bottom;
+  background-position-x: left;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+.logo {
+    width: 80%;
+    height: auto;
+}
+
+.logo-div {
+    align-self: center;
+    text-align: center;
+}
+
+.leaflet-map {
+    justify-self: center;
+}
+
+.distillery-map-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
 .info-wrapper {
     display: inline-block;
     width: 100%;
-    background:dodgerblue;
 }
+
 .title {
     text-align: center;
 }

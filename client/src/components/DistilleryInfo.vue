@@ -1,5 +1,5 @@
 <template>
-<div class="distillery-info">
+<div>
   <p>Name: {{distillery.name}}</p>
   <p>Region: {{this.region.name}}</p>
   <p>Latitude Coordinates: {{distillery.lat}}</p>
@@ -41,7 +41,7 @@ export default {
 
 <style>
 .distillery-info {
-    background-color: #CC8E69;
+    background-color: #ffffff6f;
     float:left;
     margin-right: 10px;
     padding:10px;
