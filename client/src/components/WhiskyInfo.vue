@@ -1,5 +1,5 @@
 <template>
-    <div class="whisky-info">
+    <div >
         <img class="center" height="300" width="200" :src="getImage()">
         <p>Name: {{whisky.name}}</p>
         <p>Distillery: {{distillery.name}}</p>
@@ -37,7 +37,7 @@ export default {
 
 <style>
 .whisky-info {
-    background-color: #CC8E69;
+    background-color:  #ffffff6f;
     float:left;
     padding:10px;
     width: 30%;

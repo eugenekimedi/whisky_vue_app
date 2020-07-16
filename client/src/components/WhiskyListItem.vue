@@ -1,5 +1,5 @@
 <template>
-    <div class="whisky-list-item" v-if="whisky">
+    <div v-if="whisky">
         <p v-on:click="setSelected">{{whisky.name}}</p>
     </div>
 </template>

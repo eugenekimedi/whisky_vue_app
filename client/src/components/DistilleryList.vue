@@ -1,5 +1,5 @@
 <template>
-    <div class="distillery-list" v-if="distilleries.length">
+    <div v-if="distilleries.length">
         <distillery-list-item
             v-for="(distillery, index) in distilleries"
             :distillery="distillery"
@@ -23,7 +23,7 @@ export default {
 
 <style>
 .distillery-list {
-    background-color: #CC8E69;
+    background-color:  #ffffff6f;
     float:left;
     width: 25%;
     margin-right: 10px;
